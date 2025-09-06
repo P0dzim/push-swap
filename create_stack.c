@@ -15,12 +15,24 @@
 void	create_stack(char **tab)
 {
 	t_stack	*stack;
+	int		len;
 
-	stack = malloc(ft_tablen(tab) * sizeof(t_stack));
+	len = ft_tablen(tab);
+	stack = malloc(len * sizeof(t_stack));
 	if (fill_stack(stack, tab) == -1)
 	{
 		ft_printf("Error\n");
 		free(stack);
 		return ;
 	}
+	if (!its_sorted(stack, len))
+	{
+		if (len == 2)
+			sa_move(stack);
+		else if (len == 3)
+			ft_printf("\naqui 3\n");
+		else
+			ft_printf("\naqui mais\n");
+	}
+	free(stack);
 }
