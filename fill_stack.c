@@ -13,6 +13,9 @@
 #include "push_swap.h"
 
 static int	is_repeated(t_stack *stack, int i, int nbr);
+static void	sign_postion(t_stack *stack, int len);
+static void	sort_array(int *ref_stack, int len);
+static void	put_position(t_stack *stack, int *ref_stack, int len);
 
 int	fill_stack(t_stack *stack, char **tab)
 {
@@ -34,6 +37,7 @@ int	fill_stack(t_stack *stack, char **tab)
 	}
 	if (tab[i] != NULL)
 		return (-1);
+	sign_postion(stack, i);
 	return (0);
 }
 
@@ -51,4 +55,70 @@ static int	is_repeated(t_stack *stack, int i, int nbr)
 	if (j == i)
 		return (0);
 	return (j + 1);
+}
+
+static void	sign_postion(t_stack *stack, int len)
+{
+	int	i;
+	int	*ref_stack;
+
+	i = 0;
+	ref_stack = malloc(len * sizeof(int));
+	if (!ref_stack)
+		return ;
+	while (i < len)
+	{
+		ref_stack[i] = stack[i].value;
+		i++;
+	}
+	sort_array(ref_stack, len);
+	put_position(stack, ref_stack, len);
+	free(ref_stack);
+}
+
+static void	sort_array(int *ref_stack, int len)
+{
+	int	i;
+	int	j;
+	int	temp;
+
+	i = 0;
+	j = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (ref_stack[j] < ref_stack[i])
+			{
+				temp = ref_stack[j];
+				ref_stack[j] = ref_stack[i];
+				ref_stack[i] = temp;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	put_position(t_stack *stack, int *ref_stack, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < len)
+	{
+		j = 0;
+		while (j < len)
+		{
+			if (stack[j].value == ref_stack[i])
+			{
+				stack[j].target_pos = i; 
+				break ;
+			}
+			j++;
+		}
+		i++;
+	}
 }
