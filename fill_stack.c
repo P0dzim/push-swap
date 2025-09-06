@@ -114,7 +114,7 @@ static void	put_position(t_stack *stack, int *ref_stack, int len)
 		{
 			if (stack[j].value == ref_stack[i])
 			{
-				stack[j].target_pos = i; 
+				stack[j].target_pos = i;
 				break ;
 			}
 			j++;
