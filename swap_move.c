@@ -12,33 +12,37 @@
 
 #include "push_swap.h"
 
-static void	swap_move(t_stack *stack)
+static void	swap_move(t_array *array)
 {
-	int	temp;
+	t_stack	temp;
 
-	temp = stack[0].value;
-	stack[0].value = stack[1].value;
-	stack[1].value = temp;
-	temp = stack[0].pos;
-	stack[0].pos = stack[1].pos;
-	stack[1].pos = temp;
+	temp = array->stack[array->beggin];
+	array->stack[array->beggin] = array->stack[array->beggin + 1];
+	array->stack[array->beggin + 1] = temp;
+	array->stack[array->beggin].pos--;
+	array->stack[array->beggin + 1].pos++;
+	// array->stack[array->beggin].value = array->stack[array->beggin + 1].value;
+	// array->stack[array->beggin + 1].value = temp;
+	// temp = array->stack[array->beggin].pos;
+	// array->stack[array->beggin].pos = array->stack[array->beggin + 1].pos;
+	// array->stack[array->beggin + 1].pos = temp;
 }
 
-void	sa_move(t_stack *stack_a)
+void	sa_move(t_array *array_a)
 {
 	ft_putstr_fd("sa\n", 1);
-	swap_move(stack_a);
+	swap_move(array_a);
 }
 
-void	sb_move(t_stack *stack_a)
+void	sb_move(t_array *array_b)
 {
 	ft_putstr_fd("sb\n", 1);
-	swap_move(stack_a);
+	swap_move(array_b);
 }
 
-void	ss_move(t_stack *stack_a, t_stack *stack_b)
+void	ss_move(t_array *array_a, t_array *array_b)
 {
 	ft_putstr_fd("ss\n", 1);
-	swap_move(stack_a);
-	swap_move(stack_b);
+	swap_move(array_a);
+	swap_move(array_b);
 }
