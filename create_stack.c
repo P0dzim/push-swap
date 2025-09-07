@@ -14,25 +14,25 @@
 
 void	create_stack(char **tab)
 {
-	t_stack	*stack;
+	t_array	array;
 	int		len;
 
 	len = ft_tablen(tab);
-	stack = malloc(len * sizeof(t_stack));
-	if (fill_stack(stack, tab) == -1)
+	array = init_array(len);
+	if (fill_stack(array.stack, tab) == -1)
 	{
 		ft_printf("Error\n");
-		free(stack);
+		free(array.stack);
 		return ;
 	}
-	if (!its_sorted(stack, len))
+	if (!its_sorted(&array))
 	{
 		if (len == 2)
-			sa_move(stack);
+			sa_move(&array);
 		else if (len == 3)
-			ft_printf("\naqui 3\n");
+			sort_three(&array);
 		else
 			ft_printf("\naqui mais\n");
 	}
-	free(stack);
+	free(array.stack);
 }
