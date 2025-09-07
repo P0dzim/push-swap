@@ -29,20 +29,35 @@ typedef struct s_stack
 	int	cost_b;
 }		t_stack;
 
-typedef struct s_carray
+typedef struct s_array
 {
 	t_stack	*stack;
 	int		beggin;
 	int		end;
-}			t_carray;
+	int		len;
+}			t_array;
 
+t_array	init_array(int len);
 long	ft_atol_checker(const char *nptr);
 void	create_stack(char **tab);
 int		fill_stack(t_stack *stack, char **tab);
-int		its_sorted(t_stack *stack, int len);
+int		its_sorted(t_array *array);
 
-void	sa_move(t_stack *stack_a);
-void	sb_move(t_stack *stack_a);
-void	ss_move(t_stack *stack_a, t_stack *stack_b);
+void	pa_move(t_array *array_a, t_array *array_b);
+void	pb_move(t_array *array_a, t_array *array_b);
+
+void	sa_move(t_array *array_a);
+void	sb_move(t_array *array_b);
+void	ss_move(t_array *array_a, t_array *array_b);
+
+void	ra_move(t_array *array_a);
+void	rb_move(t_array *array_b);
+void	rr_move(t_array *array_a, t_array *array_b);
+
+void	rra_move(t_array *array_a);
+void	rrb_move(t_array *array_b);
+void	rrr_move(t_array *array_a, t_array *array_b);
+
+void	sort_three(t_array *array);
 
 #endif
