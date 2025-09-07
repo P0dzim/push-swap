@@ -21,11 +21,6 @@ static void	swap_move(t_array *array)
 	array->stack[array->beggin + 1] = temp;
 	array->stack[array->beggin].pos--;
 	array->stack[array->beggin + 1].pos++;
-	// array->stack[array->beggin].value = array->stack[array->beggin + 1].value;
-	// array->stack[array->beggin + 1].value = temp;
-	// temp = array->stack[array->beggin].pos;
-	// array->stack[array->beggin].pos = array->stack[array->beggin + 1].pos;
-	// array->stack[array->beggin + 1].pos = temp;
 }
 
 void	sa_move(t_array *array_a)

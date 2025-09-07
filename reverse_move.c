@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void	rr_move(t_array *array)
+static void	reverse_move(t_array *array)
 {
 	int	i;
 
@@ -33,18 +33,18 @@ static void	rr_move(t_array *array)
 void	rra_move(t_array *array_a)
 {
 	ft_putstr_fd("rra\n", 1);
-	rr_move(array_a);
+	reverse_move(array_a);
 }
 
 void	rrb_move(t_array *array_b)
 {
 	ft_putstr_fd("rrb\n", 1);
-	rr_move(array_b);
+	reverse_move(array_b);
 }
 
 void	rrr_move(t_array *array_a, t_array *array_b)
 {
 	ft_putstr_fd("rrr\n", 1);
-	rr_move(array_a);
-	rr_move(array_b);
+	reverse_move(array_a);
+	reverse_move(array_b);
 }
