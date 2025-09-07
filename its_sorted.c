@@ -12,16 +12,16 @@
 
 #include "push_swap.h"
 
-int	its_sorted(t_stack *stack, int len)
+int	its_sorted(t_array *array)
 {
 	int	i;
 
-	i = 0;
-	while (i < len)
+	i = array->beggin;
+	while (i != array->end)
 	{
-		if (stack[i].target_pos != i)
+		if (array->stack[i].target_pos != (i - array->beggin) % array->len)
 			return (0);
-		i++;
+		i = (i + 1) % array->len;
 	}
 	return (1);
 }
