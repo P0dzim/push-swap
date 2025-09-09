@@ -21,43 +21,21 @@
 
 typedef struct s_stack
 {
-	int	value;
-	int	index;
-	int	pos;
-	int	target_pos;
-	int	cost_a;
-	int	cost_b;
-}		t_stack;
+	int				value;
+	int				pos;
+	int				target_pos;
+	struct s_stack	*next;
+	struct s_stack	*before;
+}					t_stack;
 
-typedef struct s_array
+typedef struct s_sentinel
 {
 	t_stack	*stack;
-	int		beggin;
-	int		end;
 	int		len;
-}			t_array;
+}			t_sentinel;
 
-t_array	init_array(int len);
+
 long	ft_atol_checker(const char *nptr);
 void	create_stack(char **tab);
-int		fill_stack(t_stack *stack, char **tab);
-int		its_sorted(t_array *array);
-
-void	pa_move(t_array *array_a, t_array *array_b);
-void	pb_move(t_array *array_a, t_array *array_b);
-
-void	sa_move(t_array *array_a);
-void	sb_move(t_array *array_b);
-void	ss_move(t_array *array_a, t_array *array_b);
-
-void	ra_move(t_array *array_a);
-void	rb_move(t_array *array_b);
-void	rr_move(t_array *array_a, t_array *array_b);
-
-void	rra_move(t_array *array_a);
-void	rrb_move(t_array *array_b);
-void	rrr_move(t_array *array_a, t_array *array_b);
-
-void	sort_three(t_array *array);
 
 #endif

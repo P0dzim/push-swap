@@ -2,3 +2,4 @@ a.out
 *.o
 push_swap_visualizer
 *.a
+.vscode
