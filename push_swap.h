@@ -28,14 +28,46 @@ typedef struct s_stack
 	struct s_stack	*before;
 }					t_stack;
 
-typedef struct s_sentinel
+typedef struct s_array
+{
+	int	value;
+	int	pos;
+	int	target_pos;
+}		t_array;
+
+typedef struct s_container
 {
 	t_stack	*stack;
 	int		len;
-}			t_sentinel;
+}			t_container;
 
 
 long	ft_atol_checker(const char *nptr);
+int		fill_array(t_array *stack, char **tab);
 void	create_stack(char **tab);
+void	update_pos(t_container *cont);
+int		its_sorted(t_container *cont);
+void	free_lst(t_container *cont);
+void	fill_lst(t_array *array, t_container *container);
+void	add_node(t_container *container, t_stack *node);
+
+void	start_sort(t_container contA);
+void	sort_three(t_container *cont);
+void	many_sort(t_container *contA, t_container *contB);
+
+void	reverse_a(t_container *cont);
+void	reverse_b(t_container *cont);
+void	reverse_r(t_container *contA, t_container *contB);
+
+void	ra_move(t_container *contA);
+void	rb_move(t_container *cont);
+void	rr_move(t_container *contA, t_container *contB);
+
+void	pa_move(t_container *contA, t_container *contB);
+void	pb_move(t_container *contA, t_container *contB);
+
+void	sa_move(t_container *cont);
+void	sb_move(t_container *cont);
+void	ss_move(t_container *contA, t_container *contB);
 
 #endif

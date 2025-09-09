@@ -34,7 +34,8 @@ long	ft_atol_checker(const char *nptr)
 		num = (num * 10) + (nptr[i] - '0');
 		i++;
 	}
-	if (nptr[i] != '\0')
+	if (nptr[i] != '\0' || (i >= 1 &&
+		(nptr[i - 1] == '+' || nptr[i - 1] == '-')))
 		return (INT_EXPLOSION);
 	return (num * sign);
 }
