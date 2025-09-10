@@ -22,10 +22,11 @@ void	create_stack(char **tab)
 	{
 		ft_putstr_fd("Error\n", 2);
 		free(tmp);
-		exit (1);
+		return ;
 	}
 	cont.stack = NULL;
 	cont.len = ft_tablen(tab);
+	cont.total = ft_tablen(tab);
 	fill_lst(tmp, &cont);
 	free(tmp);
 	start_sort(cont);

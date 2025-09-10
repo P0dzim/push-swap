@@ -25,6 +25,8 @@ static void	swap_move(t_container *cont)
 	node1->before = node2;
 	node1->next = node2->next;
 	node2->next = node1;
+	cont->stack = node2;
+	update_pos(cont);
 }
 
 void	sa_move(t_container *cont)

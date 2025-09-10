@@ -13,15 +13,15 @@
 
 #include "push_swap.h"
 
-static int	is_repeated(t_array *stack, int i, int nbr);
-static void	sign_postion(t_array *stack, int len);
-static void	sort_array(int *ref_stack, int len);
-static void	put_position(t_array *stack, int *ref_stack, int len);
+static size_t	is_repeated(t_array *stack, size_t i, int nbr);
+static void		sign_postion(t_array *stack, size_t len);
+static void		sort_array(int *ref_stack, size_t len);
+static void		put_position(t_array *stack, int *ref_stack, size_t len);
 
 int	fill_array(t_array *stack, char **tab)
 {
 	long	nbr;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	if (!stack)
@@ -41,9 +41,9 @@ int	fill_array(t_array *stack, char **tab)
 	return (0);
 }
 
-static int	is_repeated(t_array *stack, int i, int nbr)
+static size_t	is_repeated(t_array *stack, size_t i, int nbr)
 {
-	int	j;
+	size_t	j;
 
 	j = 0;
 	while (j < i)
@@ -57,9 +57,9 @@ static int	is_repeated(t_array *stack, int i, int nbr)
 	return (j + 1);
 }
 
-static void	sign_postion(t_array *stack, int len)
+static void	sign_postion(t_array *stack, size_t len)
 {
-	int	i;
+	size_t	i;
 	int	*ref_stack;
 
 	i = 0;
@@ -76,10 +76,10 @@ static void	sign_postion(t_array *stack, int len)
 	free(ref_stack);
 }
 
-static void	sort_array(int *ref_stack, int len)
+static void	sort_array(int *ref_stack, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 	int	temp;
 
 	i = 0;
@@ -101,10 +101,10 @@ static void	sort_array(int *ref_stack, int len)
 	}
 }
 
-static void	put_position(t_array *stack, int *ref_stack, int len)
+static void	put_position(t_array *stack, int *ref_stack, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < len)

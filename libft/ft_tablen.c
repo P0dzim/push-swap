@@ -10,9 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_tablen(char **tab)
+#include "libft.h"
+
+size_t	ft_tablen(char **tab)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
 	while(tab[len])

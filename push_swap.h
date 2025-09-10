@@ -13,32 +13,37 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define INT_EXPLOSION 3000000000
+# define INT_EXPLOSION 5000000000
 # define INT_HIGH	2147483647 
 # define INT_LOW	-2147483648
+# define A	0
+# define B 	1
 
 # include "libft/libft.h"
 
 typedef struct s_stack
 {
 	int				value;
-	int				pos;
-	int				target_pos;
+	size_t			pos;
+	size_t			target_pos;
+	ssize_t			costA;
+	ssize_t			costB;
 	struct s_stack	*next;
 	struct s_stack	*before;
 }					t_stack;
 
 typedef struct s_array
 {
-	int	value;
-	int	pos;
-	int	target_pos;
+	int		value;
+	size_t	pos;
+	size_t	target_pos;
 }		t_array;
 
 typedef struct s_container
 {
 	t_stack	*stack;
-	int		len;
+	size_t	len;
+	size_t	total;
 }			t_container;
 
 
@@ -47,6 +52,10 @@ int		fill_array(t_array *stack, char **tab);
 void	create_stack(char **tab);
 void	update_pos(t_container *cont);
 int		its_sorted(t_container *cont);
+void	sing_cost(t_container *contA, t_container *contB);
+size_t	positive_num(ssize_t nbr);
+void	shortcut_way(t_container *contA, t_container *contB);
+
 void	free_lst(t_container *cont);
 void	fill_lst(t_array *array, t_container *container);
 void	add_node(t_container *container, t_stack *node);

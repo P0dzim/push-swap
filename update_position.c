@@ -15,7 +15,7 @@
 void	update_pos(t_container *cont)
 {
 	t_stack *node;
-	int	i;
+	size_t	i;
 
 	i = 0;
 	node = cont->stack;

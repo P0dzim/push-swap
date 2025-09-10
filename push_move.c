@@ -22,19 +22,15 @@ static void	push_move(t_container *cont_in, t_container *cont_out)
 	node->before->next = node->next;
 	node->next->before = node->before;
 	cont_out->stack = node->next;
-	if (cont_in->stack != NULL)
-	{
-		node->before = cont_in->stack->before;
-		node->next = cont_in->stack;
-		cont_in->stack->before->next = node;
-		cont_in->stack->before = node;
-	}
-	else
+	if (cont_in->stack == NULL)
 	{
 		node->before = node;
 		node->next = node;
-		cont_in->stack = node;
 	}
+	add_node(cont_in, node);
+	if (cont_out->len == 0)
+		cont_out->stack = NULL;
+	cont_in->stack = cont_in->stack->before;
 	update_pos(cont_in);
 	update_pos(cont_out);
 }

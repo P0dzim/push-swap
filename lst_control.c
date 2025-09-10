@@ -16,24 +16,15 @@ static t_stack	*create_node(t_array item);
 
 void	fill_lst(t_array *array, t_container *container)
 {
-	int		i;
+	size_t	i;
 	t_stack	*node;
 
 	i = 0;
 	while (i < container->len)
 	{
 		node = create_node(array[i]);
-		if (!node)
-			return ;
-		if (container->stack == NULL)
-			container->stack = node;
-		else
-		{
-			node->before = container->stack->before;
-			node->next = container->stack;
-			container->stack->before->next = node;
-			container->stack->before = node;
-		}
+		if (node)
+			add_node(container, node);
 		i++;
 	}
 }
@@ -55,7 +46,7 @@ static t_stack	*create_node(t_array item)
 
 void	free_lst(t_container *cont)
 {
-	int		i;
+	size_t	i;
 	t_stack	*node;
 	t_stack	*next_node;
 
@@ -69,4 +60,17 @@ void	free_lst(t_container *cont)
 		i++;
 	}
 	cont->stack = NULL;
+}
+
+void	add_node(t_container *container, t_stack *node)
+{
+		if (container->stack == NULL)
+			container->stack = node;
+		else
+		{
+			node->before = container->stack->before;
+			node->next = container->stack;
+			container->stack->before->next = node;
+			container->stack->before = node;
+		}
 }
