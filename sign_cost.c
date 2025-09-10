@@ -12,10 +12,9 @@
 
 #include "push_swap.h"
 
-static ssize_t	first_half(t_container *cont, ssize_t target, ssize_t op);
-static ssize_t	end_half(t_container *cont, ssize_t target, ssize_t op);
+static t_stack	*first_half(t_container *cont, ssize_t target, ssize_t op);
+static t_stack	*end_half(t_container *cont, ssize_t target, ssize_t op);
 static ssize_t cost_calculation(t_container *cont, size_t target, ssize_t op);
-
 
 void	sing_cost(t_container *contA, t_container *contB)
 {
@@ -35,49 +34,65 @@ void	sing_cost(t_container *contA, t_container *contB)
 
 static ssize_t cost_calculation(t_container *cont, size_t target, ssize_t op)
 {
-	ssize_t	i;
-	ssize_t	j;
+	t_stack	*i;
+	t_stack	*j;
+	ssize_t	len;
 
 	i = first_half(cont, target, op);
 	j = end_half(cont, target, op);
-
-	if (positive_num(i) > positive_num(j))
-		return (j);
-	return (i);
+	len = (ssize_t)cont->len;
+	if (i->target_pos == target + op || j->target_pos < target + op)
+		return (i->pos);
+	else if (j->target_pos == target + op || i->target_pos < target + op)
+		return (-len + (ssize_t)j->pos);
+	else if (positive_num(i->pos) > positive_num(-len + (ssize_t)j->pos))
+		return (-len + (ssize_t)j->pos);
+	else
+		return (i->pos);
 }
 
-static ssize_t	first_half(t_container *cont, ssize_t target, ssize_t op)
+static t_stack	*first_half(t_container *cont, ssize_t target, ssize_t op)
 {
 	ssize_t	i;
 	t_stack	*node;
+	t_stack	*near;
 
 	i =	(ssize_t)cont->len / 2;
 	node = cont->stack;
+	near = cont->stack;
 	while (i)
 	{
 		if ((ssize_t)node->target_pos == target + op)
-			return (node->pos);
+			return (node);
+		if (node != cont->stack && target < (ssize_t)node->target_pos
+			&& near->pos > node->pos)
+			near = node;
 		node = node->next;
 		i--;
 	}
-	return (INT_EXPLOSION);
+	return (near);
 }
 
-static ssize_t	end_half(t_container *cont, ssize_t target, ssize_t op)
+static t_stack	*end_half(t_container *cont, ssize_t target, ssize_t op)
 {
 	ssize_t		i;
 	t_stack	*node;
+	t_stack	*near;
 
 	i =	0;
 	node = cont->stack->before;
+	near = node;
 	while (i < (ssize_t)(cont->len / 2 + cont->len % 2))
 	{
 		if ((ssize_t)node->target_pos == target + op)
-			return ((i * -1) - 1);
+			return (node);
+		if (node != cont->stack && target < (ssize_t)node->target_pos
+			&& near->pos < node->pos)
+			near = node;
 		node = node->before;
 		i++;
 	}
-	return (INT_EXPLOSION);
+	return (near);
 }
 
 size_t	positive_num(ssize_t nbr)
