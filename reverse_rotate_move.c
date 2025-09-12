@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_move.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 12:12:59 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 12:13:00 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:29 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	reverse_b(t_container *cont)
 	reverse_move(cont);
 }
 
-void	reverse_r(t_container *contA, t_container *contB)
+void	reverse_r(t_container *cont_a, t_container *cont_b)
 {
 	ft_putstr_fd("rrr\n", 1);
-	reverse_move(contA);
-	reverse_move(contB);
+	reverse_move(cont_a);
+	reverse_move(cont_b);
 }

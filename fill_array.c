@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_stack.c                                     :+:      :+:    :+:   */
+/*   fill_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:33:33 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 10:33:34 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:04 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -60,7 +59,7 @@ static size_t	is_repeated(t_array *stack, size_t i, int nbr)
 static void	sign_postion(t_array *stack, size_t len)
 {
 	size_t	i;
-	int	*ref_stack;
+	int		*ref_stack;
 
 	i = 0;
 	ref_stack = malloc(len * sizeof(int));
@@ -80,7 +79,7 @@ static void	sort_array(int *ref_stack, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	int	temp;
+	int		temp;
 
 	i = 0;
 	j = 0;

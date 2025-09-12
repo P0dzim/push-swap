@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 12:43:22 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 12:43:24 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:12 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int complete_conteiner(t_container *cont);
+static int	complete_conteiner(t_container *cont);
 
-int	its_sorted(t_container *cont)
+int	is_sorted(t_container *cont)
 {
 	size_t	i;
 	t_stack	*node;
@@ -33,7 +33,7 @@ int	its_sorted(t_container *cont)
 	return (1);
 }
 
-static int complete_conteiner(t_container *cont)
+static int	complete_conteiner(t_container *cont)
 {
 	size_t	i;
 	t_stack	*node;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fill_lst.c                                         :+:      :+:    :+:   */
+/*   lst_control.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 11:32:34 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 11:32:36 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:14 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	free_lst(t_container *cont)
 
 void	add_node(t_container *container, t_stack *node)
 {
-		if (container->stack == NULL)
-			container->stack = node;
-		else
-		{
-			node->before = container->stack->before;
-			node->next = container->stack;
-			container->stack->before->next = node;
-			container->stack->before = node;
-		}
+	if (container->stack == NULL)
+		container->stack = node;
+	else
+	{
+		node->before = container->stack->before;
+		node->next = container->stack;
+		container->stack->before->next = node;
+		container->stack->before = node;
+	}
 }

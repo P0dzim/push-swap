@@ -1,93 +1,94 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cost_calculation.c                                 :+:      :+:    :+:   */
+/*   shortcut_way.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:32:24 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 16:32:25 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:36 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	ca_moves(t_container *contA, t_stack *node);
-static void	cb_moves(t_container *contB, t_stack *node);
-static void	exploxion(t_container *contA, t_container *contB);
+static void	ca_moves(t_container *cont_a, t_stack *node);
+static void	cb_moves(t_container *cont_b, t_stack *node);
+static void	one_way(t_container *cont_a, t_container *cont_b, t_stack *node);
 
-void	shortcut_way(t_container *contA, t_container *contB)
+void	shortcut_way(t_container *cont_a, t_container *cont_b)
 {
 	t_stack	*node[2];
 	size_t	i;
 
-	node[0] = contB->stack;
+	node[0] = cont_b->stack;
 	node[1] = node[0];
 	i = 0;
-	while (i < contB->len)
+	while (i < cont_b->len)
 	{
-		if (positive_num(node[0]->costA) + positive_num(node[0]->costB)
-			< positive_num(node[1]->costA) + positive_num(node[1]->costB))
+		if (positive_num(node[0]->cost_a) + positive_num(node[0]->cost_b)
+			< positive_num(node[1]->cost_a) + positive_num(node[1]->cost_b))
 			node[1] = node[0];
 		node[0] = node[0]->next;
 		i++;
 	}
-	if (node[1]->costA == INT_EXPLOSION)
-	{
-		exploxion(contA, contB);
-		shortcut_way(contA, contB);
-		return ;
-	}
-	ca_moves(contA, node[1]);
-	cb_moves(contB, node[1]);
-	pa_move(contA, contB);
+	if ((node[1]->cost_a > 0 && node[1]->cost_b > 0)
+		|| (node[1]->cost_a < 0 && node[1]->cost_b < 0))
+		one_way(cont_a, cont_b, node[1]);
+	ca_moves(cont_a, node[1]);
+	cb_moves(cont_b, node[1]);
+	pa_move(cont_a, cont_b);
 }
 
-static void	ca_moves(t_container *contA, t_stack *node)
+static void	ca_moves(t_container *cont_a, t_stack *node)
 {
-	while (node->costA)
+	while (node->cost_a)
 	{
-		if (node->costA > 0)
+		if (node->cost_a > 0)
 		{
-			ra_move(contA);
-			node->costA--;
+			ra_move(cont_a);
+			node->cost_a--;
 		}
-		if (node->costA < 0)
+		if (node->cost_a < 0)
 		{
-			reverse_a(contA);
-			node->costA++;
+			reverse_a(cont_a);
+			node->cost_a++;
 		}
 	}
 }
 
-static void	cb_moves(t_container *contB, t_stack *node)
+static void	cb_moves(t_container *cont_b, t_stack *node)
 {
-	while (node->costB)
+	while (node->cost_b)
 	{
-		if (node->costB > 0)
+		if (node->cost_b > 0)
 		{
-			rb_move(contB);
-			node->costB--;
+			rb_move(cont_b);
+			node->cost_b--;
 		}
-		if (node->costB < 0)
+		if (node->cost_b < 0)
 		{
-			reverse_b(contB);
-			node->costB++;
+			reverse_b(cont_b);
+			node->cost_b++;
 		}
 	}
 }
 
-static void	exploxion(t_container *contA, t_container *contB)
+static void	one_way(t_container *cont_a, t_container *cont_b, t_stack *node)
 {
-	t_stack	*node[2];
-
-	node[B] = contB->stack;
-	while (node[B]->target_pos != contA->total - 1)
-		node[B] = node[B]->next;
-	node[A] = contA->stack;
-	while (node[A]->target_pos != 0)
-		node[A] = node[A]->next;
-	node[B]->costA = node[A]->pos;
-	if (node[A]->pos > contA->len / 2)
-		node[B]->costA = -(contA->len / 2) + node[B]->costA;
+	while (node->cost_a && node->cost_b)
+	{
+		if (node->cost_a > 0 && node->cost_b > 0)
+		{
+			rr_move(cont_a, cont_b);
+			node->cost_a--;
+			node->cost_b--;
+		}
+		if (node->cost_a < 0 && node->cost_b < 0)
+		{
+			reverse_r(cont_a, cont_b);
+			node->cost_a++;
+			node->cost_b++;
+		}
+	}
 }

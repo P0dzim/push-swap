@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_move.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 14:29:06 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 14:29:08 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:44 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	swap_move(t_container *cont)
 {
-	t_stack *node1;
-	t_stack *node2;
+	t_stack	*node1;
+	t_stack	*node2;
 
 	node1 = cont->stack;
 	node2 = cont->stack->next;
@@ -41,9 +41,9 @@ void	sb_move(t_container *cont)
 	swap_move(cont);
 }
 
-void	ss_move(t_container *contA, t_container *contB)
+void	ss_move(t_container *cont_a, t_container *cont_b)
 {
 	ft_putstr_fd("ss\n", 1);
-	swap_move(contA);
-	swap_move(contB);
+	swap_move(cont_a);
+	swap_move(cont_b);
 }

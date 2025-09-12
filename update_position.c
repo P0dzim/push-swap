@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 12:20:24 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 12:20:25 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:49 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	update_pos(t_container *cont)
 {
-	t_stack *node;
+	t_stack	*node;
 	size_t	i;
 
 	i = 0;

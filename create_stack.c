@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:58:53 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 10:58:54 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:02 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	create_stack(char **tab)
 {
-	t_array 	*tmp;
+	t_array		*tmp;
 	t_container	cont;
 
 	tmp = malloc(ft_tablen(tab) * sizeof(t_array));
-	if (fill_array(tmp, tab) == -1)
+	if (fill_array(tmp, tab) == -1 || *tab == NULL)
 	{
 		ft_putstr_fd("Error\n", 2);
-		free(tmp);
+		if (tmp)
+			free(tmp);
 		return ;
 	}
 	cont.stack = NULL;

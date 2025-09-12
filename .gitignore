@@ -1,5 +1,7 @@
 a.out
 *.o
+push_swap
 push_swap_visualizer
+Push-Swap-Tester
 *.a
 .vscode

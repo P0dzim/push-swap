@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_move.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 12:17:33 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/09 12:17:34 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 08:30:20 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static void	push_move(t_container *cont_in, t_container *cont_out)
 	update_pos(cont_out);
 }
 
-void	pa_move(t_container *contA, t_container *contB)
+void	pa_move(t_container *cont_a, t_container *cont_b)
 {
 	ft_putstr_fd("pa\n", 1);
-	push_move(contA, contB);
+	push_move(cont_a, cont_b);
 }
 
-void	pb_move(t_container *contA, t_container *contB)
+void	pb_move(t_container *cont_a, t_container *cont_b)
 {
 	ft_putstr_fd("pb\n", 1);
-	push_move(contB, contA);
+	push_move(cont_b, cont_a);
 }
