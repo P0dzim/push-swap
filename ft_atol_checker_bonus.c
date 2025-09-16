@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atol_checker.c                                  :+:      :+:    :+:   */
+/*   ft_atol_checker_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/12 09:31:14 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/12 16:40:48 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 16:40:55 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 static void	skip_zero(char **nptr, int j);
 

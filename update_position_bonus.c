@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tablen.c                                        :+:      :+:    :+:   */
+/*   update_position_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vitosant <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/06 12:36:30 by vitosant          #+#    #+#             */
-/*   Updated: 2025/09/12 17:39:36 by vitosant         ###   ########.fr       */
+/*   Created: 2025/09/09 12:20:24 by vitosant          #+#    #+#             */
+/*   Updated: 2025/09/12 11:43:56 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "checker_bonus.h"
 
-size_t	ft_tablen(char **tab)
+void	update_pos(t_container *cont)
 {
-	size_t	len;
+	t_stack	*node;
+	size_t	i;
 
-	len = 0;
-	while (tab[len])
-		len++;
-	return (len);
+	i = 0;
+	node = cont->stack;
+	while (i < cont->len)
+	{
+		node->pos = i;
+		node = node->next;
+		i++;
+	}
 }

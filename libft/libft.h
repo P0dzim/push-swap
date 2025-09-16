@@ -6,7 +6,7 @@
 /*   By: vitosant <vitosant@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 10:43:46 by vitosant          #+#    #+#             */
-/*   Updated: 2025/08/26 12:15:59 by vitosant         ###   ########.fr       */
+/*   Updated: 2025/09/12 11:08:15 by vitosant         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+
+# define OPEN_MAX 1024
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_list
 {
@@ -61,6 +66,7 @@ char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_reverse_split(char **tab, char c);
 char	**ft_tabjoin(char **t1, char **t2);
+char	*get_next_line(int fd);
 
 int		ft_toupper(int c);
 int		ft_tolower(int c);
