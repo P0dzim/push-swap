@@ -25,7 +25,7 @@ ssize_t	find_lower_bound(t_container *cont, size_t target)
 	{
 		if (node->target_pos < target
 			&& (!lower || lower->target_pos > node->target_pos))
-				lower = node;
+			lower = node;
 		node = node->next;
 		i++;
 	}
@@ -48,7 +48,7 @@ ssize_t	find_upper_bound(t_container *cont, size_t target)
 	{
 		if (node->target_pos > target
 			&& (!upper || upper->target_pos > node->target_pos))
-				upper = node;
+			upper = node;
 		node = node->next;
 		i++;
 	}
