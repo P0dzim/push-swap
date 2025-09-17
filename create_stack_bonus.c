@@ -47,8 +47,6 @@ void	create_stack(char **tab)
 
 static void	beggin_check(t_container *cont_a, t_container *cont_b)
 {
-	if (is_sorted(cont_a))
-		return ;
 	get_operation(cont_a, cont_b);
 	if (is_sorted(cont_a) && cont_a->all_valid)
 		ft_putstr_fd("OK\n", 1);
