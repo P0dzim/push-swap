@@ -19,7 +19,7 @@
 # define A	0
 # define B 	1
 
-# include "libft/libft.h"
+# include "libft.h"
 
 typedef struct s_stack
 {
